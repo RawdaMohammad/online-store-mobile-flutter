@@ -1,11 +1,11 @@
-class Review {
-  final int rating;
+class ReviewModel {
+  final double rating;
   final String comment;
-  final DateTime date;
+  final DateTime date;  
   final String reviewerName;
   final String reviewerEmail;
 
-  Review({
+  ReviewModel({
     required this.rating,
     required this.comment,
     required this.date,
@@ -13,9 +13,9 @@ class Review {
     required this.reviewerEmail,
   });
 
-  factory Review.fromJson(Map<String, dynamic> json) {
-    return Review(
-      rating: json['rating'],
+  factory ReviewModel.fromJson(Map<String, dynamic> json) {
+    return ReviewModel(
+      rating: (json['rating'] as num).toDouble(),
       comment: json['comment'],
       date: DateTime.parse(json['date']),
       reviewerName: json['reviewerName'],
