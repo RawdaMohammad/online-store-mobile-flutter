@@ -9,7 +9,7 @@ class ProductService {
 		List<ProductModel> products = [];
 		try {
 			var response = await dio.get(endPoint);
-			var data = response.data;
+			var data = response.data['products'];
 
 			data.forEach((json) {
 				ProductModel product = ProductModel.fromJson(json);
