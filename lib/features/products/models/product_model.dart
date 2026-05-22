@@ -6,7 +6,7 @@ class ProductModel {
   final String description;
   final String category;
   final double price;
-  final double? discountPercentage;
+  final double discountPercentage;
   final double? rating;
   final int stock;
   final List<String> tags;
@@ -21,7 +21,7 @@ class ProductModel {
     required this.description,
     required this.category,
     required this.price,
-    this.discountPercentage = 0.0,
+    required this.discountPercentage,
     this.rating = 0.0,
     required this.stock,
     required this.tags,
@@ -42,7 +42,7 @@ class ProductModel {
       rating: (json['rating'] as num).toDouble(),
       stock: json['stock'],
       tags: List<String>.from(json['tags']),
-      brand: json['brand'],
+      brand: json['brand'] ?? 'Unknown',
       reviews: (json['reviews'] as List).map((review) => ReviewModel.fromJson(review)).toList(),
       images: List<String>.from(json['images']),
       thumbnail: json['thumbnail'],
