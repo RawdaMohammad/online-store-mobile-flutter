@@ -15,6 +15,9 @@ class ProductScreen extends StatefulWidget {
 class _ProductScreenState extends State<ProductScreen> {
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+    
     return Scaffold(
       // appBar: AppBar(
       //   title: const Text('Products'),
@@ -22,17 +25,17 @@ class _ProductScreenState extends State<ProductScreen> {
       body: BlocBuilder<ProductCubit, ProductState>(
         builder: (context, state) {
           if(state is ProductsLoading) {
-            return const Center(child: CircularProgressIndicator());
+            return Center(child: CircularProgressIndicator(color: Theme.of(context).primaryColor));
           }
           if(state is ProductsLoaded) {
             return Padding(
-              padding: const EdgeInsets.all(6.0),
+              padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.01, vertical: screenHeight * 0.01),
               child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 6,
-                  crossAxisSpacing: 6,
-                  childAspectRatio: 0.6,
+                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 210,
+                  mainAxisSpacing: screenHeight * 0.01,
+                  crossAxisSpacing: screenWidth * 0.01,
+                  childAspectRatio: 0.58,
                 ),
                 itemCount: state.products.length,
                 itemBuilder: (context, index) {
@@ -42,7 +45,7 @@ class _ProductScreenState extends State<ProductScreen> {
             );
           }
           if(state is ProductsError) {
-            return Center(child: Text(state.errorMessage));
+            return Center(child: Text(state.errorMessage, style: const TextStyle(color: Colors.red, fontSize: 20)));
           }
           return const Center(child: Text('No products found'));
         },
