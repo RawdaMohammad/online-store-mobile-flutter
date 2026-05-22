@@ -18,7 +18,7 @@ It displays a list of products for an online store application. Users can browse
 
 ## 📱 Screen
 
-<img width="814" height="1734" alt="Product_screen" src="https://github.com/user-attachments/assets/2ccd5dc8-5036-40c8-83a6-57f9c2fd10b0" />
+<img width="814" height="2159" alt="products_screen2" src="https://github.com/user-attachments/assets/128b455b-d0c6-42e7-b9c7-2bb84c5f6ef0" />
 
 
 ## 📂 Project Structure
