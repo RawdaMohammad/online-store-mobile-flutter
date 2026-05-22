@@ -16,9 +16,9 @@ class _ProductScreenState extends State<ProductScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Products'),
-      ),
+      // appBar: AppBar(
+      //   title: const Text('Products'),
+      // ),
       body: BlocBuilder<ProductCubit, ProductState>(
         builder: (context, state) {
           if(state is ProductsLoading) {
@@ -32,7 +32,7 @@ class _ProductScreenState extends State<ProductScreen> {
                   crossAxisCount: 2,
                   mainAxisSpacing: 6,
                   crossAxisSpacing: 6,
-                  childAspectRatio: 0.58,
+                  childAspectRatio: 0.6,
                 ),
                 itemCount: state.products.length,
                 itemBuilder: (context, index) {
